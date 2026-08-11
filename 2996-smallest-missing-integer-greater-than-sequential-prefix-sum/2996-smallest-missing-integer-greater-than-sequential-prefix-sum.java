@@ -1,35 +1,36 @@
 class Solution {
     public int missingInteger(int[] nums) {
+        int sum=nums[0];
 
-        int sum = nums[0];
+        for(int i=1;i<=nums.length-1;i++){
+            if(nums[i]==nums[i-1]+1){
+                sum=sum+nums[i];
 
-        // Find sequential prefix
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1] + 1) {
-                sum += nums[i];
-            } else {
+            }
+            else{
                 break;
             }
         }
+        
 
-        // Find smallest missing integer
-        int ans = sum;
+        while(true){
+            boolean found=false;
 
-        while (true) {
-            boolean found = false;
-
-            for (int num : nums) {
-                if (num == ans) {
-                    found = true;
-                    break;
-                }
+        
+        for(int j=0;j<nums.length;j++){
+            if(nums[j]==sum){
+                found=true;
+                break;
             }
-
-            if (!found) {
-                return ans;
-            }
-
-            ans++;
         }
+        if(found==false){
+            return sum;
+        }
+        sum++;
+
+     }
     }
+        
+
+    
 }
