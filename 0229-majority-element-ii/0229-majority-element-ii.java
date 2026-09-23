@@ -15,9 +15,6 @@ class Solution {
                 ans.add(key);
             }
         }
-
-        Collections.sort(ans);
-
         return ans;
     }
 }
